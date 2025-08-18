@@ -39,6 +39,9 @@ test-coverage: ## Run tests with coverage
 run: build ## Run the God Says
 	./$(CLI_BINARY)
 
+run-server: build ## Run God Says server
+	./$(CLI_BINARY) -http
+
 install: build ## Install binaries to GOPATH/bin
 	@echo "Installing binaries..."
 	go install $(CLI_PATH)
