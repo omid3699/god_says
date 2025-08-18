@@ -106,8 +106,9 @@ func RunServer(host string, port int) error {
 	r.HandleFunc("/json", server.handleJSON).Methods("GET", "OPTIONS")
 	r.HandleFunc("/health", server.handleHealth).Methods("GET", "OPTIONS")
 
-	// Add middleware
+	// Add middlewares
 	r.Use(loggingMiddleware)
+	r.Use(securityMiddleware)
 
 	// Create HTTP server with timeouts
 	httpServer := &http.Server{
