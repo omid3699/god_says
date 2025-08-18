@@ -109,6 +109,7 @@ func RunServer(host string, port int) error {
 	// Add middlewares
 	r.Use(loggingMiddleware)
 	r.Use(securityMiddleware)
+	r.Use(timeoutMiddleware(RequestTimeout))
 
 	// Create HTTP server with timeouts
 	httpServer := &http.Server{
