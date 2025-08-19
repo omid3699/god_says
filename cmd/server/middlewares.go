@@ -48,6 +48,6 @@ func securityMiddleware(next http.Handler) http.Handler {
 // timeoutMiddleware adds request timeout
 func timeoutMiddleware(timeout time.Duration) func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
-		return http.TimeoutHandler(next, timeout, "Request Time out")
+		return http.TimeoutHandler(next, timeout, "Request timeout")
 	}
 }

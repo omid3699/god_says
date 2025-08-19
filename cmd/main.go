@@ -53,10 +53,10 @@ func main() {
 		fmt.Println(message)
 	} else {
 		// Run in in HTTP server mode
-		log.Printf("Sartinting God Says HTTP server host: %s port: %d", *host, *port)
+		log.Printf("Starting God Says HTTP server host: %s port: %d", *host, *port)
 		err := server.RunServer(*host, *port)
 		if err != nil {
-			log.Fatalf("Error in runing God Says HTTP server: %s", err)
+			log.Fatalf("Error in running God Says HTTP server: %s", err)
 		}
 	}
 }

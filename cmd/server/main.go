@@ -123,7 +123,7 @@ func RunServer(host string, port int) error {
 	stop := make(chan os.Signal, 1)
 	signal.Notify(stop, os.Interrupt, syscall.SIGTERM)
 
-	// Start Server in a goroutin
+	// Start Server in a goroutine
 	go func() {
 		log.Printf("Endpoints:")
 		log.Printf("  GET /        - Plain text response")
