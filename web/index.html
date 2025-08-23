@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>God Says</title>
+  </head>
+  <body>
+    <h1>God Says (WASM)</h1>
+    <button id="init">Init</button>
+    <button id="speak">Speak</button>
+    <pre id="out"></pre>
+
+    <script src="wasm_exec.js"></script>
+    <script>
+      const go = new Go();
+
+      async function loadWasm() {
+        const resp = await WebAssembly.instantiateStreaming(
+          fetch("main.wasm"),
+          go.importObject,
+        );
+        go.run(resp.instance);
+      }
+      loadWasm();
+
+      const out = document.getElementById("out");
+      document.getElementById("init").onclick = () => {
+        out.textContent = JSON.stringify(initGod(32), null, 2);
+      };
+      document.getElementById("speak").onclick = () => {
+        out.textContent = JSON.stringify(speak(), null, 2);
+      };
+    </script>
+  </body>
+</html>

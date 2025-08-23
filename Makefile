@@ -1,4 +1,4 @@
-.PHONY: build test test-coverage test-race  clean run run-server 
+.PHONY: build build-wasm test test-coverage test-race  clean run run-server 
 
 
 # Build variables
@@ -16,6 +16,11 @@ help: ## Show this help message
 build: ## Build the binary
 	@echo "Building God Says Binary"
 	go build $(BUILD_FLAGS) -o $(CLI_BINARY) $(CLI_PATH)
+
+make build-wasm: ## Build WASM
+	@echo "Building Godsays for platform wasm"
+	GOOS=js GOARCH=wasm go build -o web/main.wasm ./cmd/wasm
+	
 
 
 clean: ## Clean built binaries
